@@ -10,8 +10,9 @@ export class UserService {
   getAllUsers() {
     return this.userModel.find({});
   }
-  addUser(user) {
-    this.users.push(user);
-    return 'success';
+  async addUser(user) {
+    console.log(user);
+    const resilt = await this.userModel.insertMany(user);
+    return `success ${resilt}`;
   }
 }
